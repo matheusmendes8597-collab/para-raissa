@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Raissa ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+:root {
+  --accent-red: #ff0000;
+  --gold: #ffd700;
+  --neon-red: #ff4d6d;
+  --silver: #c0c0c0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  width: 100%;
+  height: auto;
+  overflow-x: auto; 
+  overflow-y: auto; 
+}
+
+/* Página inicial */
+#pagina-inicial {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100000;
+}
+
+#btn-inicio {
+  padding: 12px 30px; 
+  font-size: 20px; 
+  font-weight: bold;
+  color: white;
+  border: 3px solid white;
+  border-radius: 15px;
+  cursor: pointer;
+  background: linear-gradient(45deg, var(--accent-red), var(--gold), var(--neon-red), var(--silver));
+  background-size: 400% 400%;
+  animation: gradient-shift 4s ease infinite, breathe-btn 2s ease-in-out infinite alternate;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Partículas do botão */
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.8;
+  animation: particle-move 0.8s forwards;
+  background: linear-gradient(45deg, var(--accent-red), var(--gold), var(--neon-red), var(--silver));
+  background-size: 400% 400%;
+}
+
+@keyframes particle-move {
+  0% { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(calc(var(--dx)*1px), calc(var(--dy)*-1px)) scale(0); opacity: 0; }
+}
+
+/* Chuva de corações no início */
+#chuva-inicio {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.coracao-inicio {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url('https://static.vecteezy.com/system/resources/previews/018/868/329/non_2x/red-heart-symbol-on-transparent-background-free-png.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  animation: cair 5s linear infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes breathe-btn {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes cair { 0% { transform: translateY(-30px); } 100% { transform: translateY(100vh); } }
+
+/* Conteúdo principal escondido */
+#conteudo-principal {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1s ease;
+}
+#conteudo-principal.mostrar {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Resto do CSS existente */
+.painel {
+  background-color: white;
+  border-radius: 16px;
+  text-align: center;
+  padding: 20px 15px 60px 15px; 
+  position: relative;
+  max-width: 450px;
+  width: 90%;
+  box-sizing: border-box;
+  margin: 25px auto;
+}
+
+.painel img {
+  display: block;
+  margin: 8px auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.header h1 {
+  font-size: 26px;
+  font-weight: bold;
+  margin: 8px 0 12px 0;
+  position: relative;
+  display: inline-block;
+  animation: breathe 3s ease-in-out infinite alternate;
+}
+
+.header h1 .nome {
+  background: linear-gradient(45deg, var(--accent-red), var(--gold), var(--neon-red), var(--silver));
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes breathe {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
+#contador-amor {
+  color: #ff0000;
+  font-size: 14px;
+  margin: 5px 0 12px 0;
+  text-align: center;
+}
+#contador-amor .destaque { font-weight: bold; }
+
+h2 { 
+  font-size: 15px; 
+  font-weight: normal;
+  color: #570010;
+  margin-top: 48px;
+  margin-bottom: 20px;
+}
+
+#sim, #nao {
+  height: 38px;
+  width: 66px;
+  background-color: #ff0000;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  position: absolute;
+  bottom: 10px;
+  z-index: 9999;
+}
+
+@media (max-width: 600px) {
+  .painel { padding-bottom: 50px; margin-top: 10px; }
+  .header h1 { font-size: 22px; }
+  h2 { font-size: 13px; margin-top: 48px; margin-bottom: 8px; }
+  #contador-amor { font-size: 12px; margin-bottom: 8px; }
+  #sim, #nao { height: 34px; width: 58px; font-size: 11px; }
+  .painel img { max-width: 80%; margin: 6px auto; }
+  .rodape { font-size: 13px; padding: 7px 15px; margin-top: auto; }
+}
+
+@media (min-width: 601px) {
+  .rodape { font-size: 14px; padding: 70px 20px; margin-top: auto; }
+}
+
+#chuva-coracoes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 99999;
+  opacity: 0.3;
+}
+
+.coracao {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url('https://static.vecteezy.com/system/resources/previews/018/868/329/non_2x/red-heart-symbol-on-transparent-background-free-png.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  animation: cair 5s linear infinite;
+}
+
+.rodape {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  color: #570010;
+  box-sizing: border-box;
+  line-height: 1.5;
+  word-wrap: break-word;
+  background: transparent;
+  padding: 15px 20px;
+}
+.rodape strong { font-weight: bold; }
+</style>
+</head>
+<body>
+
+<!-- Página inicial -->
+<div id="pagina-inicial">
+  <div id="chuva-inicio"></div>
+  <button id="btn-inicio">❤ Clique</button>
+</div>
+
+<!-- Conteúdo principal escondido -->
+<div id="conteudo-principal">
+<div id="chuva-coracoes"></div>
+
+<div class="painel">
+  <div class="header">
+    <h1><span class="nome">Raissa</span> 🥰😍</h1>
+  </div>
+
+  <p id="contador-amor"></p>
+
+  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExMW1xM2I4Znc0YzA1cDR4Z2wxOG0wZWFiMzZrd3l1YWlyaHB3c3Z1ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/KHKU6noBjVKwomN9Aj/giphy.gif" alt="">
+
+  <h2>
+    Sei que a gente se conhece a pouco tempo mas queria muito ter a oportunidade de arrancar um sorriso do seu rosto! Posso te pagar um açaí qualquer dia desses?
+  </h2>
+
+  <button id="sim">Sim!</button>
+  <button onmouseover="fuja()" id="nao">Não!</button>
+</div>
+
+<div class="rodape">
+  Feito pelo homem mais cheiroso, bonito, esperto, estiloso e fiel desse mundo - <strong>Matheus Henrique</strong>.
+</div>
+</div>
+
+<script>
+/* Página inicial */
+const btnInicio = document.getElementById('btn-inicio');
+const conteudo = document.getElementById('conteudo-principal');
+const paginaInicial = document.getElementById('pagina-inicial');
+const chuvaInicio = document.getElementById('chuva-inicio');
+
+btnInicio.addEventListener('click', () => {
+  btnInicio.style.opacity = 0;
+  btnInicio.style.transform = 'scale(0.95)';
+  setTimeout(() => {
+    paginaInicial.style.display = 'none';
+    conteudo.classList.add('mostrar');
+  }, 600);
+});
+
+/* Partículas do botão */
+btnInicio.addEventListener('mouseenter', () => {
+  for(let i=0;i<8;i++){
+    criarParticula(btnInicio);
+  }
+});
+function criarParticula(botao){
+  const part = document.createElement('div');
+  part.classList.add('particle');
+  part.style.left = (botao.offsetLeft + botao.offsetWidth/2)+'px';
+  part.style.top = (botao.offsetTop + botao.offsetHeight/2)+'px';
+  part.style.setProperty('--dx', Math.random()*40-20);
+  part.style.setProperty('--dy', Math.random()*60+20);
+  document.body.appendChild(part);
+  setTimeout(()=>part.remove(),800);
+}
+
+/* Chuva de corações no início */
+function criarCoracaoInicio() {
+  const coracao = document.createElement('div');
+  coracao.classList.add('coracao-inicio');
+  coracao.style.left = Math.random()*window.innerWidth+'px';
+  coracao.style.animationDuration = (4+Math.random()*3)+'s';
+  coracao.style.transform = `scale(${0.5+Math.random()*0.7})`;
+  chuvaInicio.appendChild(coracao);
+  setTimeout(()=>{coracao.remove();},7000);
+}
+setInterval(criarCoracaoInicio,300);
+
+/* Contador desde que nos conhecemos */
+const dataInicio = new Date(2026, 6, 23); // 23 de julho de 2026
+function plural(valor, singular, plural) { return `${valor} ${valor===1? singular: plural}`; }
+
+function atualizarContador() {
+  const agora = new Date();
+
+  let anos = agora.getFullYear() - dataInicio.getFullYear();
+  let meses = agora.getMonth() - dataInicio.getMonth();
+  let dias = agora.getDate() - dataInicio.getDate();
+  let horas = agora.getHours() - dataInicio.getHours();
+  let minutos = agora.getMinutes() - dataInicio.getMinutes();
+  let segundos = agora.getSeconds() - dataInicio.getSeconds();
+
+  if (segundos < 0) { segundos += 60; minutos--; }
+  if (minutos < 0) { minutos += 60; horas--; }
+  if (horas < 0) { horas += 24; dias--; }
+  if (dias < 0) {
+    const mesAnterior = new Date(agora.getFullYear(), agora.getMonth(), 0);
+    dias += mesAnterior.getDate();
+    meses--;
+  }
+  if (meses < 0) { meses += 12; anos--; }
+
+  let partes = [];
+  if (anos > 0) partes.push(plural(anos, 'ano', 'anos'));
+  if (meses > 0) partes.push(plural(meses, 'mês', 'meses'));
+  if (dias > 0) partes.push(plural(dias, 'dia', 'dias'));
+  partes.push(plural(horas, 'hora', 'horas'));
+  partes.push(plural(minutos, 'minuto', 'minutos'));
+  partes.push(plural(segundos, 'segundo', 'segundos'));
+
+  let textoTempo = partes.join(', ');
+  const ultimaVirgula = textoTempo.lastIndexOf(',');
+  if (ultimaVirgula !== -1) {
+    textoTempo = textoTempo.substring(0, ultimaVirgula) + ' e' + textoTempo.substring(ultimaVirgula + 1);
+  }
+
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  const dataFormatada = agora.toLocaleDateString('pt-BR', options);
+
+  document.getElementById('contador-amor').innerHTML =
+    `Hoje é dia <span class="destaque">${dataFormatada}</span> e nos conhecemos há <span class="destaque">${textoTempo}</span> :)`;
+}
+
+atualizarContador();
+setInterval(atualizarContador, 1000);
+
+/* Botões Sim/Não */
+function posicionarBotoes() {
+  const sim = document.getElementById("sim");
+  const nao = document.getElementById("nao");
+  const painel = document.querySelector('.painel');
+  const painelWidth = painel.offsetWidth;
+  const totalWidth = sim.offsetWidth + nao.offsetWidth + 15;
+  const startX = (painelWidth - totalWidth)/2;
+  sim.style.left = startX+'px';
+  nao.style.left = (startX+sim.offsetWidth+15)+'px';
+}
+document.addEventListener('DOMContentLoaded', posicionarBotoes);
+window.addEventListener('resize', posicionarBotoes);
+function fuja() {
+  const botaoNao = document.getElementById("nao");
+  const larguraJanela = window.innerWidth;
+  const alturaJanela = window.innerHeight;
+  const maxX = larguraJanela - botaoNao.offsetWidth;
+  const maxY = alturaJanela - botaoNao.offsetHeight;
+  botaoNao.style.position = 'fixed';
+  botaoNao.style.left = Math.floor(Math.random()*maxX)+'px';
+  botaoNao.style.top = Math.floor(Math.random()*maxY)+'px';
+}
+
+/* Chuva de corações do conteúdo */
+const container = document.getElementById('chuva-coracoes');
+function criarCoracao() {
+  const coracao = document.createElement('div');
+  coracao.classList.add('coracao');
+  coracao.style.left = Math.random()*window.innerWidth+'px';
+  coracao.style.animationDuration = (4+Math.random()*3)+'s';
+  coracao.style.transform = `scale(${0.5+Math.random()*0.7})`;
+  container.appendChild(coracao);
+  setTimeout(()=>{coracao.remove();},7000);
+}
+setInterval(criarCoracao,300);
+</script>
+</body>
+</html>
