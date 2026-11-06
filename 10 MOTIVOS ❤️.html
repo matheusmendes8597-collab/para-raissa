@@ -189,26 +189,10 @@ body {
 .gif-principal {
   display: block;
   width: 100%;
-  max-width: 330px;
+  max-width: 360px;
   height: auto;
   border-radius: 18px;
   object-fit: contain;
-}
-
-/* CONTADOR */
-
-#contador-amor {
-  color: var(--rosa-escuro);
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.8;
-  text-align: center;
-  margin: 0 auto 30px;
-  max-width: 650px;
-}
-
-#contador-amor .destaque {
-  font-weight: 700;
 }
 
 /* MOTIVOS */
@@ -349,7 +333,7 @@ body {
 
 .rodape strong {
   font-weight: 700;
-  color: var(--rosa-escuro);
+  color: #bb0b0b;
 }
 
 /* RESPONSIVIDADE */
@@ -365,12 +349,7 @@ body {
   }
 
   .gif-principal {
-    max-width: 280px;
-  }
-
-  #contador-amor {
-    font-size: 11px;
-    margin-bottom: 25px;
+    max-width: 300px;
   }
 
   .motivos-titulo {
@@ -449,10 +428,6 @@ body {
       alt="10 motivos pra você me dar uma chance"
     >
 
-    <!-- CONTADOR -->
-
-    <p id="contador-amor"></p>
-
     <!-- GIF ORIGINAL -->
 
     <div class="gif-container">
@@ -465,7 +440,6 @@ body {
 
     <!-- DEZ MOTIVOS -->
 
-    <h2 class="motivos-titulo">Tá, mas por quê? ❤️</h2>
     <p class="motivos-subtitulo">
       Tenho pelo menos dez bons motivos pra te contar...
     </p>
@@ -552,10 +526,10 @@ body {
   <!-- RODAPÉ -->
 
   <footer class="rodape">
-    Inspirado em 10 Coisas que Eu Odeio em Você.<br>
-    Só que dessa vez são 10 motivos pra você me dar uma chance. ❤️
+    Fiz Inspirado em 10 Coisas que Eu Odeio em Você.<br>
+    Só que dessa vez são 10 motivos pra você me dar uma chance.
     <br><br>
-    Feito por <strong>Matheus Henrique.</strong>
+    <strong>Matheus Henrique</strong>
   </footer>
 
 </div>
@@ -622,90 +596,6 @@ function criarCoracaoInicio() {
 }
 
 const intervaloInicio = setInterval(criarCoracaoInicio, 500);
-
-/* CONTADOR DESDE QUE NOS CONHECEMOS */
-
-const dataInicio = new Date(2026, 6, 23);
-
-function plural(valor, singular, plural) {
-  return `${valor} ${valor === 1 ? singular : plural}`;
-}
-
-function atualizarContador() {
-  const agora = new Date();
-
-  let anos = agora.getFullYear() - dataInicio.getFullYear();
-  let meses = agora.getMonth() - dataInicio.getMonth();
-  let dias = agora.getDate() - dataInicio.getDate();
-  let horas = agora.getHours() - dataInicio.getHours();
-  let minutos = agora.getMinutes() - dataInicio.getMinutes();
-  let segundos = agora.getSeconds() - dataInicio.getSeconds();
-
-  if (segundos < 0) {
-    segundos += 60;
-    minutos--;
-  }
-
-  if (minutos < 0) {
-    minutos += 60;
-    horas--;
-  }
-
-  if (horas < 0) {
-    horas += 24;
-    dias--;
-  }
-
-  if (dias < 0) {
-    const mesAnterior = new Date(
-      agora.getFullYear(),
-      agora.getMonth(),
-      0
-    );
-
-    dias += mesAnterior.getDate();
-    meses--;
-  }
-
-  if (meses < 0) {
-    meses += 12;
-    anos--;
-  }
-
-  let partes = [];
-
-  if (anos > 0) partes.push(plural(anos, 'ano', 'anos'));
-  if (meses > 0) partes.push(plural(meses, 'mês', 'meses'));
-  if (dias > 0) partes.push(plural(dias, 'dia', 'dias'));
-
-  partes.push(plural(horas, 'hora', 'horas'));
-  partes.push(plural(minutos, 'minuto', 'minutos'));
-  partes.push(plural(segundos, 'segundo', 'segundos'));
-
-  let textoTempo = partes.join(', ');
-  const ultimaVirgula = textoTempo.lastIndexOf(',');
-
-  if (ultimaVirgula !== -1) {
-    textoTempo =
-      textoTempo.substring(0, ultimaVirgula) +
-      ' e' +
-      textoTempo.substring(ultimaVirgula + 1);
-  }
-
-  const options = {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric'
-  };
-
-  const dataFormatada = agora.toLocaleDateString('pt-BR', options);
-
-  document.getElementById('contador-amor').innerHTML =
-    `Hoje é dia <span class="destaque">${dataFormatada}</span> e nos conhecemos há <span class="destaque">${textoTempo}</span> :)`;
-}
-
-atualizarContador();
-setInterval(atualizarContador, 1000);
 
 /* BOTÃO NÃO */
 
